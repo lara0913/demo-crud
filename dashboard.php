@@ -82,7 +82,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div class="container-fluid">
   <br>
   <h1 class="my-5">Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-      <div class="col">
+  
+  <div class="col">
         <div class="mt-5 mb-3 clearfix">
           <h2 class="pull-left">Alumni Details</h2>
           <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Alumni</a>
@@ -97,19 +98,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       if ($result = $pdo->query($sql)) {
         if ($result->rowCount() > 0) {
       ?>
-          <table id="example" class="table table-striped" style="width:100%;margin-top:5rem;">
-            <thead>
-              <tr>
+        <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Salary</th>
                 <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php while ($row = $result->fetch()) : ?>
-                <tr>
+            </tr>
+        </thead>
+        <tbody>
+        <?php while ($row = $result->fetch()) : ?>
+        <tr>
                   <td><?= $row['id'] ?></td>
                   <td><?= $row['name'] ?></td>
                   <td><?= $row['address'] ?></td>
@@ -120,18 +121,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <a href="delete.php?id=<?= $row['id'] ?>" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>
                   </td>
                 </tr>
-              <?php endwhile; ?>
-            </tbody>
-            <tfoot>
-              <tr>
+                <?php endwhile; ?>
+        </tbody>
+        <tfoot>
+                <tr>
                 <th>#</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>Salary</th>
                 <th>Action</th>
-              </tr>
-            </tfoot>
-          </table>
+            </tr>
+        </tfoot>
+    </table> 
+          
       <?php
           // Free result set
           unset($result);
